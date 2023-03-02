@@ -1,6 +1,8 @@
 # Automation Test Script for Gotoko CM Portal
 This repository contains the test script for automating 2 workflows identified in the Luma Magento Testing website
 
+Website URL: https://magento.softwaretestingboard.com/
+
 # Requirements
 - Make sure you have node installed in your machine. If you haven't installed it yet, please visit https://nodejs.org/en/download/
 - Make sure you have VS Code installed
