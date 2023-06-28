@@ -1,4 +1,4 @@
-# Automation Test Script for Gotoko CM Portal
+# Automation Test Script for Luma Magento (Sample Website for Testing)
 This repository contains the test script for automating 2 workflows identified in the Luma Magento Testing website
 
 Website URL: https://magento.softwaretestingboard.com/

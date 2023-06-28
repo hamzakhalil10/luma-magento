@@ -4,23 +4,29 @@ describe('In this test suite, test cases related to the Workflow 1 i.e. the Prod
     * @desc Before each test case, visit the testing website
     */
     beforeEach(() => {
+        cy.viewport(1920, 1080) // Set viewport to 1920px x 1080px
         cy.visit("https://magento.softwaretestingboard.com/")
         cy.wait(1000)
     })
 
     /**
-    * @desc in this test cases the user logs in first
-    * After loggng in, the user clicks on the Shop New Yoga Collection button displayed on the home page 
+    * @desc in this test cases the user creates an account first
+    * After creating an account, the user clicks on the Shop New Yoga Collection button displayed on the home page 
     * the user opens product detail page for the first product shown in the list
     * The user adds the product to the wishlist and verifies if the prdouct is added to the wish list
     */
     it('Verify if a logged in user can add the product to the wish list', () => {
-        cy.get('.panel > .header > .authorization-link > a').contains('Sign In').click()   //click on the sign in button
-        cy.get('#email').type("hamza@xyz.com")              //enter the email
-        cy.get('input[type=password]').type('@Bc123456')    //enter the password
-        cy.get('button[type=submit]').contains('Sign In').click()     //click on the Sign in button
+        cy.get('.panel > .header > :nth-child(3) > a').contains('Create an Account').click()   //click on the Create an Account button
+        cy.get('#firstname').type('John')      //Fill the First Name field
+        cy.get('#lastname').type('Doe')        //Fill the last name field
+        cy.get('#email_address').type('johndoe00@xyz.com')   //fill the email field
+        cy.get('#password').type('John1@xyz.com')     //fill the password field
+        cy.get('#password-confirmation').type('John1@xyz.com')   //re-enter the password in the password confirmation field
+        cy.get('#form-validate > .actions-toolbar > div.primary > .action').click()   //click on the Create an Account button
+        cy.wait(3000)      //wait for 3 seconds
+        cy.get('.message-success > div').should('be.visible')   //verify the account is created
+        cy.get('.logo > img').click()     //click on the Luma magento logo to go back to the home page
         cy.wait(3000)        //wait for 3 seconds
-        //cy.get(':nth-child(2) > .greet > .logged-in').should('be.visible')   //verify if the user is logged in
         cy.get('.home-main > .content > .action').contains('Shop New Yoga').click()   //click on the Shop New Yoga
         cy.wait(1000) //wait for 1 second
         cy.get(':nth-child(1) > .product-item-info > .photo > .product-image-container > .product-image-wrapper > .product-image-photo').click()    //click on the first product
